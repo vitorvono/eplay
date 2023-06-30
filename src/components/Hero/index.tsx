@@ -1,43 +1,36 @@
-import { Game } from '../../pages/Home'
-import Button from '../Button'
-import Tag from '../Tag'
+import styled from 'styled-components'
 
-import { formataPreco } from '../ProductsList'
+import { Props } from '.'
+import { breakpoints, cores } from '../../styles'
+import { Card } from '../Product/styles'
 
-import { Banner, Infos } from './styles'
+export const Container = styled.section<Omit<Props, 'title' | 'games'>>`
+  padding: 32px 0;
+  background-color: ${(props) =>
+    props.background === 'black' ? cores.preta : cores.cinza};
 
-type Props = {
-  game: Game
-}
+  ${Card} {
+    background-color: ${(props) =>
+      props.background === 'black' ? cores.cinza : cores.preta};
+  }
+`
 
-const Hero = ({ game }: Props) => (
-  <Banner style={{ backgroundImage: `url(${game.media.cover})` }}>
-    <div className="container">
-      <div>
-        <Tag>{game.details.category}</Tag>
-        <Tag>{game.details.system}</Tag>
-      </div>
+export const List = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
 
-      <Infos>
-        <h2>{game.name}</h2>
-        <p>
-          {game.prices.discount && (
-            <span>De {formataPreco(game.prices.old)}</span>
-          )}
-          {game.prices.current && <>Por {formataPreco(game.prices.current)}</>}
-        </p>
-        {game.prices.current && (
-          <Button
-            type="button"
-            title="Clique aqui para adicionar este jogo ao carrinho"
-            variant="primary"
-          >
-            Adicionar ao carrinho
-          </Button>
-        )}
-      </Infos>
-    </div>
-  </Banner>
-)
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
 
-export default Hero
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
+`
+
+export const Title = styled.h2`
+  font-size: 18px;
+  font-weight: bold;
+`
