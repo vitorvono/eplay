@@ -1,20 +1,19 @@
-import { Imagem, Titulo, Precos } from './styles'
+import { useEffect, useState } from 'react'
 
+import { Imagem, Precos, Titulo } from './styles'
 import bannerImg from '../../assets/images/banner-homem-aranha.png'
 import Tag from '../Tag'
 import Button from '../Button'
-import { Game } from '../../pages/Home'
-import { useEffect, useState } from 'react'
-
+import { Game } from '../../Pages/Home'
 import { formataPreco } from '../ProductsList'
 
-import { useGetFeaturedGameQuery } from '../../services/api'
+import { useGetFeaturedQuery } from '../../services/api'
 
 const Banner = () => {
-  const { data: game, isLoading } = useGetFeaturedGameQuery()
+  const { data: game, isLoading } = useGetFeaturedQuery()
 
   if (!game) {
-    return <h3>Carregando...</h3>
+    return <h1>carregando...</h1>
   }
 
   return (
@@ -22,16 +21,17 @@ const Banner = () => {
       <div className="container">
         <Tag size="big">Destaque do dia</Tag>
         <div>
-          <Titulo>{game.name}</Titulo>
+          <Titulo>{game?.name}</Titulo>
           <Precos>
-            De <span>{formataPreco(game.prices.old)}</span> <br />
+            De <span>{formataPreco(game.prices.old)}</span>
+            <br />
             por apenas {formataPreco(game.prices.current)}
           </Precos>
         </div>
         <Button
           type="link"
           to={`/product/${game.id}`}
-          title="Clique aqui para aproveitar esta oferta"
+          title="clique aqui para aproveitar"
         >
           Aproveitar
         </Button>

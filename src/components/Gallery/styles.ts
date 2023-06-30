@@ -17,8 +17,9 @@ export const Action = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease-in;
 `
 
 export const Item = styled.li`
@@ -35,7 +36,7 @@ export const Item = styled.li`
   &:hover {
     ${Action} {
       opacity: 1;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.5s ease-in;
     }
   }
 `
@@ -47,11 +48,12 @@ export const Modal = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
-  display: none;
-  align-items: center;
-  justify-content: center;
 
-  &.visivel {
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  &.visible {
     display: flex;
   }
 
@@ -74,6 +76,10 @@ export const ModalContent = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
+
+    img {
+      cursor: pointer;
+    }
 
     h4 {
       font-size: 18px;

@@ -1,3 +1,4 @@
+import { type } from 'os'
 import { TagContainer } from './styles'
 
 export type Props = {

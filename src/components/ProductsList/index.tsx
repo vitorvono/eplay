@@ -1,15 +1,13 @@
-import { Game } from '../../pages/Home'
+import { Game } from '../../Pages/Home'
 import Product from '../Product'
-
 import { Container, List } from './styles'
 
 export type Props = {
   title: string
   background: 'gray' | 'black'
   games: Game[]
-  id?: string
+  id: string
 }
-
 export const formataPreco = (preco = 0) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -17,8 +15,8 @@ export const formataPreco = (preco = 0) => {
   }).format(preco)
 }
 
-const ProductsList = ({ background, title, games, id }: Props) => {
-  const getGameTags = (game: Game) => {
+const ProductsList = ({ title, background, games, id }: Props) => {
+  const getGameTag = (game: Game) => {
     const tags = []
 
     if (game.release_date) {
@@ -37,9 +35,10 @@ const ProductsList = ({ background, title, games, id }: Props) => {
   }
 
   return (
-    <Container id={id} background={background}>
+    <Container background={background} id={id}>
       <div className="container">
         <h2>{title}</h2>
+
         <List>
           {games.map((game) => (
             <li key={game.id}>
@@ -48,10 +47,10 @@ const ProductsList = ({ background, title, games, id }: Props) => {
                 category={game.details.category}
                 description={game.description}
                 image={game.media.thumbnail}
-                infos={getGameTags(game)}
+                infos={getGameTag(game)}
                 system={game.details.system}
                 title={game.name}
-              />
+              ></Product>
             </li>
           ))}
         </List>

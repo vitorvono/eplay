@@ -7,16 +7,16 @@ export const Imagem = styled.div`
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
-  font-weight: bold;
+  font-weight: 700;
   position: relative;
 
   .container {
-    position: relative;
-    padding-top: 340px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    position: relative;
     z-index: 1;
+    padding-top: 340px;
   }
 
   ${TagContainer} {
@@ -30,16 +30,15 @@ export const Imagem = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.73);
     content: '';
   }
 `
-
 export const Titulo = styled.h2`
   font-size: 36px;
+  font-weight: 700;
   max-width: 450px;
 `
-
 export const Precos = styled.p`
   font-size: 24px;
   margin-top: 24px;

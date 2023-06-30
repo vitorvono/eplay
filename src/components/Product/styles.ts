@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 export const Card = styled(Link)`
   background-color: ${cores.cinza};
-  border-radius: 8px;
   padding: 8px;
+  border-radius: 8px;
   position: relative;
   text-decoration: none;
   color: ${cores.branca};
@@ -23,7 +23,6 @@ export const Card = styled(Link)`
     margin-right: 8px;
   }
 `
-
 export const Titulo = styled.h3`
   font-weight: bold;
   font-size: 16px;
@@ -35,10 +34,9 @@ export const Titulo = styled.h3`
 export const Descricao = styled.p`
   font-size: 14px;
   line-height: 22px;
-  display: block;
   margin-top: 16px;
+  display: block;
 `
-
 export const Infos = styled.div`
   position: absolute;
   top: 16px;

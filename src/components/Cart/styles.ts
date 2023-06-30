@@ -3,7 +3,7 @@ import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
 
-import fechar from '../../assets/images/fechar.png'
+import close from '../../assets/images/fechar.png'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -11,7 +11,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: ${cores.preto};
   opacity: 0.7;
 `
 
@@ -31,15 +31,15 @@ export const CartContainer = styled.div`
 `
 
 export const Sidebar = styled.aside`
-  background-color: ${cores.cinza};
   z-index: 1;
-  padding: 40px 16px 0 16px;
+  background-color: ${cores.cinza};
   max-width: 360px;
   width: 100%;
+  padding: 40px 16px 0 16px;
 
   ${ButtonContainer} {
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
   }
 `
 
@@ -48,25 +48,24 @@ export const Prices = styled.p`
   font-size: 14px;
   color: ${cores.branca};
   margin-bottom: 24px;
+  margin-top: 16px;
 
   span {
     display: block;
     font-size: 12px;
-    color: ${cores.cinzaClaro};
   }
 `
-
 export const Quantity = styled.p`
-  font-weight: bold;
   font-size: 16px;
+  font-weight: bold;
+  font-size: 14px;
   color: ${cores.branca};
   margin-top: 32px;
-  margin-bottom: 16px;
 `
-
 export const CartItem = styled.li`
   display: flex;
-  border-bottom: 1px solid ${cores.cinzaClaro};
+  gap: 16px;
+  border-bottom: 1px solid ${cores.branca};
   padding: 8px 0;
   position: relative;
 
@@ -74,30 +73,25 @@ export const CartItem = styled.li`
     height: 80px;
     width: 80px;
     object-fit: cover;
-    margin-right: 24px;
   }
 
   h3 {
-    color: ${cores.branca};
-    font-weight: bold;
     font-size: 16px;
+    font-weight: bold;
   }
 
   span {
     display: block;
-    color: ${cores.branca};
-    font-weight: bold;
     font-size: 14px;
+    font-weight: bold;
   }
 
   ${TagContainer} {
-    margin-right: 8px;
-    margin-top: 8px;
-    margin-bottom: 16px;
+    margin: 8px 8px 8px 0;
   }
 
   button {
-    background-image: url(${fechar});
+    background-image: url(${close});
     width: 16px;
     height: 16px;
     border: none;
