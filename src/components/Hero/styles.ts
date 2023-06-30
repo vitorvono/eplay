@@ -1,47 +1,51 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
-import Tag from '../Tag'
+import { colors, breakpoints } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Banner = styled.div`
+  position: relative;
+  display: block;
   height: 480px;
   width: 100%;
-  display: block;
-  position: relative;
 
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: center;
+  background-size: 100%;
 
   padding-top: 16px;
 
+  @media (max-width: ${breakpoints.tablet}) {
+    background-size: cover;
+  }
+
   &::after {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.73);
+    background-color: #000;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     content: '';
+    opacity: 0.56;
+  }
+
+  ${TagContainer} {
+    margin-right: 8px;
   }
 
   .container {
     z-index: 1;
     position: relative;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     height: 100%;
-  }
-
-  ${TagContainer} {
-    margin-right: 8px;
+    justify-content: space-between;
   }
 `
 
 export const Infos = styled.div`
   padding: 16px;
-  background-color: ${cores.preto};
+  background-color: ${colors.black};
   max-width: 290px;
   font-weight: bold;
 

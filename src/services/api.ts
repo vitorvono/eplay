@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Game } from '../Pages/Home'
 
 type Product = {
   id: number
@@ -35,12 +34,16 @@ type PurchasePayload = {
   }
 }
 
+type PurchaseResponse = {
+  orderId: string
+}
+
 const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://fake-api-tau.vercel.app/api/eplay'
   }),
   endpoints: (builder) => ({
-    getFeatured: builder.query<Game, void>({
+    getFeaturedGame: builder.query<Game, void>({
       query: () => 'destaque'
     }),
     getOnSale: builder.query<Game[], void>({
@@ -49,25 +52,25 @@ const api = createApi({
     getSoon: builder.query<Game[], void>({
       query: () => 'em-breve'
     }),
-    getAction: builder.query<Game[], void>({
+    getActionGames: builder.query<Game[], void>({
       query: () => 'acao'
     }),
-    getSports: builder.query<Game[], void>({
+    getSportGames: builder.query<Game[], void>({
       query: () => 'esportes'
     }),
-    getSimulation: builder.query<Game[], void>({
+    getSimulationGames: builder.query<Game[], void>({
       query: () => 'simulacao'
     }),
-    getRpg: builder.query<Game[], void>({
-      query: () => 'rpg'
-    }),
-    getFight: builder.query<Game[], void>({
+    getFightGames: builder.query<Game[], void>({
       query: () => 'luta'
+    }),
+    getRpgGames: builder.query<Game[], void>({
+      query: () => 'rpg'
     }),
     getGame: builder.query<Game, string>({
       query: (id) => `jogos/${id}`
     }),
-    purchase: builder.mutation<any, PurchasePayload>({
+    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
       query: (body) => ({
         url: 'checkout',
         method: 'POST',
@@ -78,15 +81,16 @@ const api = createApi({
 })
 
 export const {
-  useGetFeaturedQuery,
-  useGetOnSaleQuery,
+  useGetFeaturedGameQuery,
   useGetSoonQuery,
-  useGetActionQuery,
-  useGetFightQuery,
-  useGetRpgQuery,
-  useGetSimulationQuery,
-  useGetSportsQuery,
+  useGetOnSaleQuery,
+  useGetActionGamesQuery,
+  useGetSportGamesQuery,
+  useGetSimulationGamesQuery,
+  useGetFightGamesQuery,
+  useGetRpgGamesQuery,
   useGetGameQuery,
   usePurchaseMutation
 } = api
+
 export default api
